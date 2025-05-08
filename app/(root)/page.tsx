@@ -1,4 +1,3 @@
-import { title } from "process";
 import SearchForm from "../components/searchForm";
 import Startupcards from "../components/startupcards";
 export default async function Home({
@@ -7,18 +6,19 @@ export default async function Home({
   searchParams: Promise<{ query?: string }>;
 }) {
   const query = (await searchParams).query;
-  
-  const post = [{
-    _createdAt: new Date(),
-    views :55,
-    _id : 1,
-    author : {_id:1, name:"John Doe"},
-    description: "this is a sample description for the startup",
-    image: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
-    category:"tech",
-    title:"Sample Startup",
-  }]
 
+  const post = [
+    {
+      _createdAt: new Date(),
+      views: 55,
+      _id: 1,
+      author: { _id: 1, name: "John Doe" },
+      description: "this is a sample description for the startup",
+      image: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
+      category: "tech",
+      title: "Sample Startup",
+    },
+  ];
 
   return (
     <>
@@ -37,14 +37,13 @@ export default async function Home({
           {query ? `Search for ${query}` : "All Start ups"}
         </p>
         <ul className="mt-7 card_grid">
-          {post?.length>0?
-          post.map((post:StarupCardType,index:number)=>(
-
-<Startupcards key={post?.id} post={post}/>
-          )):
-          <p className="No results found">No Startups Found</p>
-
-          }
+          {post?.length > 0 ? (
+            post.map((post: StartupTypeCard) => (
+              <Startupcards key={post?._id} post={post} />
+            ))
+          ) : (
+            <p className="no-results">No startups found</p>
+          )}
         </ul>
       </section>
     </>

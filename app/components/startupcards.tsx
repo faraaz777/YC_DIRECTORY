@@ -1,4 +1,4 @@
-import { formatDate } from "../lib/utils";
+import { formatDate } from "../../lib/utils";
 import { EyeIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -53,7 +53,7 @@ export default function Startupcards({ post }: { post: StarupCardType }) {
           <Link href={`/?query=${category?.toLowerCase()}`}>
             <p className="text-16-medium">{category}</p>
           </Link>
-          <Button className="startup-card_btn" asChild>
+          <Button className="startup-card_btn" >
             <Link href={`/startup/${_id}`}>Details</Link>
           </Button>
         </div>
