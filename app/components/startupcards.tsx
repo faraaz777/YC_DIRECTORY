@@ -16,6 +16,7 @@ export default function Startupcards({ post }: { post: StarupCardType }) {
   } = post;
 
   return (
+    
     <>
       <li className="startup-card group">
         <div className="flex-between">

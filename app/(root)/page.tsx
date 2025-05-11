@@ -1,24 +1,21 @@
+import { client } from "@/sanity/lib/client";
 import SearchForm from "../components/searchForm";
 import Startupcards from "../components/startupcards";
+import { STARTUPS_QUERY } from "@/sanity/lib/queries";
+
 export default async function Home({
   searchParams,
 }: {
   searchParams: Promise<{ query?: string }>;
 }) {
+  //getting the query from the search params
   const query = (await searchParams).query;
 
-  const post = [
-    {
-      _createdAt: new Date(),
-      views: 55,
-      _id: 1,
-      author: { _id: 1, name: "John Doe" },
-      description: "this is a sample description for the startup",
-      image: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
-      category: "tech",
-      title: "Sample Startup",
-    },
-  ];
+  //fetching data from sanity
+  const post = await client.fetch(STARTUPS_QUERY);
+
+  console.log(JSON.stringify(post, null, 2));
+
 
   return (
     <>
@@ -28,7 +25,8 @@ export default async function Home({
           <br /> Conneect With Entrepreneurs
         </h1>
         <p className="sub-heading !max-w-3xl">
-          Submit Ideas, Vote on Pitches, and Get Noticed in Virtual Competitions{" "}
+          Submit Ideas, Vote on Pitches, and Get Noticed in Virtual
+          Competitions{" "}
         </p>
         <SearchForm query={query} />
       </section>
