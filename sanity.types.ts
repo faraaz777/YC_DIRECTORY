@@ -142,7 +142,7 @@ export type Startup = {
   views?: number;
   description?: string;
   category?: string;
-  img?: string;
+  image?: string;
   pitch?: string;
 };
 

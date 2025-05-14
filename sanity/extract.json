@@ -763,7 +763,7 @@
         },
         "optional": true
       },
-      "img": {
+      "image": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
