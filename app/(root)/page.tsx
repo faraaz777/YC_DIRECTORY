@@ -1,7 +1,8 @@
 import SearchForm from "@/components/searchForm";
 import Startupcards from "@/components/startupcards";
 import { STARTUPS_QUERY } from "@/sanity/lib/queries";
-import { sanityFetch ,SanityLive} from "@/sanity/lib/live";
+import { sanityFetch, SanityLive } from "@/sanity/lib/live";
+import { auth } from "@/auth";
 
 export default async function Home({
   searchParams,
@@ -10,12 +11,15 @@ export default async function Home({
 }) {
   //getting the query from the search params
   const query = (await searchParams).query;
-const params ={search :query || null} 
+  const params = { search: query || null };
+
+  const session = await auth();
+  console.log(session?.id);
+  
   //fetching data from sanity
   // const post = await client.fetch(STARTUPS_QUERY);
-const {data:posts} = await sanityFetch({query:STARTUPS_QUERY, params})
+  const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY, params });
   console.log(JSON.stringify(posts, null, 2));
-
 
   return (
     <>
@@ -45,7 +49,7 @@ const {data:posts} = await sanityFetch({query:STARTUPS_QUERY, params})
         </ul>
       </section>
 
-<SanityLive/>
+      <SanityLive />
     </>
   );
 }
