@@ -20,16 +20,15 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
 
   //parallel fetching to reduce loading time
   if (!id) return notFound();
-  const [post]= await Promise.all([
-    client.fetch(STARTUP_BY_ID_QUERY, { id })
+  const [post, playlistData] = await Promise.all([
+    client.fetch(STARTUP_BY_ID_QUERY, { id }),
+    client.fetch(PLAYLIST_BY_SLUG_QUERY, { slug: "editor-pick" }),
   ]);
 
   // const post = await client.fetch(STARTUP_BY_ID_QUERY, { id });
-  const playlistData = await client.fetch(PLAYLIST_BY_SLUG_QUERY, { slug: "editor-pick" });
-const editorPosts = playlistData?.select ;
-console.log(editorPosts);
-
-
+  // const playlistData = await client.fetch(PLAYLIST_BY_SLUG_QUERY, { slug: "editor-pick" });
+  const editorPosts = playlistData?.select;
+  console.log(editorPosts);
 
   // const { select: editorPosts } = await client.fetch(
   //   PLAYLIST_BY_SLUG_QUERY,
@@ -98,10 +97,12 @@ console.log(editorPosts);
           <div className="max-w-4xl mx-auto">
             <p className="text-30-semibold">Editor Picks</p>
             <ul className="mt-7 card_grid-sm">
-              {
+              {(editorPosts as StartupTypeCard[])?.length === 0 ? (
+                <p className="no-result">No editor picks available</p>
+              ) : (
                 editorPosts.map((post: StartupTypeCard, index: number) => (
                   <Startupcards key={index} post={post} />
-                )
+                ))
               )}
             </ul>
           </div>
