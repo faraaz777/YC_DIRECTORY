@@ -74,3 +74,17 @@ export const AUTHOR_BY_ID_QUERY = defineQuery(
 
 )
 
+export const PLAYLIST_BY_SLUG_QUERY =
+  defineQuery(`*[_type == "playlist" && slug.current == $slug][0] | order(_createdAt desc) {
+  _id, 
+  title, 
+  slug,
+  _createdAt,
+  author -> {
+    _id, name, image, bio
+  }, 
+  views,
+  description,
+  category,
+  image,
+}`);
