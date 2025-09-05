@@ -1,3 +1,36 @@
+<h2 align="center">
+  YC_DIRECTORY <br/>
+  <a href="https://yc-directory-g3mk.vercel.app/" target="_blank">yc-directory-g3mk.vercel.app/</a>
+</h2>
+<div align="center">
+  <img alt="Demo" src="./frontend/src/rdme.png" />
+</div>
+
+<br/>
+
+## Built With
+
+A platform where you can explore innovative startup ideas and find the people behind them
+
+This project was built using these technologies.
+
+- Next.js
+- Sanity.io
+- Zod
+- Tailwind css
+- Auth.js
+- Vercel
+
+## Features
+
+**Allowed users to browse innovative startup ideas and discover founders behind them.**
+
+**Implemented dynamic rendering, responsive UI, and structured content management for smooth user experience.**
+
+**Deployed on Vercel, making it publicly accessible for real-world usage.**
+
+**Added Github Authentication.**
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
