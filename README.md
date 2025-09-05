@@ -3,7 +3,7 @@
   <a href="https://yc-directory-g3mk.vercel.app/" target="_blank">yc-directory-g3mk.vercel.app/</a>
 </h2>
 <div align="center">
-  <img alt="Demo" src="./frontend/src/rdme.png" />
+  <img alt="Demo" src="./components/readmeImg.png" />
 </div>
 
 <br/>
